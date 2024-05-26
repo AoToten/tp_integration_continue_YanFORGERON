@@ -48,10 +48,10 @@ jobs:
               id: docker_build
               run: |
                   docker build -t yfn-cat-app:${{ github.sha }} .
-                  docker tag yfn-cat-app:${{ github.sha }} "${{secrets.DOCKER_USERNAME }}"/yfn-cat-app:${{ github.sha }}
-                  docker tag yfn-cat-app:${{ github.sha }} aototne/yfn-cat-app:latest
-                  docker push "${{secrets.DOCKER_USERNAME }}"/yfn-cat-app:${{ github.sha }}
-                  docker push "${{secrets.DOCKER_USERNAME }}"/yfn-cat-app:latest
+                  docker tag yfn-cat-app:${{ github.sha }} aototen/yfn-cat-app:${{ github.sha }}
+                  docker tag yfn-cat-app:${{ github.sha }} aototen/yfn-cat-app:latest
+                  docker push aototen/yfn-cat-app:${{ github.sha }}
+                  docker push aototen/yfn-cat-app:latest
 
     release:
         runs-on: ubuntu-latest
@@ -69,5 +69,5 @@ jobs:
               id: docker_build
               run: |
                   docker build -t yfn-cat-app:${{ github.sha }} .
-                  docker tag yfn-cat-app:${{ github.sha }} "${{secrets.DOCKER_USERNAME }}"/yfn-cat-app:release-${{ github.event.release.tag_name }}
-                  docker push "${{secrets.DOCKER_USERNAME }}"/yfn-cat-app:release-${{ github.event.release.tag_name }}
+                  docker tag yfn-cat-app:${{ github.sha }} aototen/yfn-cat-app:release-${{ github.event.release.tag_name }}
+                  docker push aototen/yfn-cat-app:release-${{ github.event.release.tag_name }}
